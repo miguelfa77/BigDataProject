@@ -1,5 +1,5 @@
 SELECT
-    CAST("titleId" AS VARCHAR) AS tconst,
+    CAST("titleId" AS VARCHAR) AS titleId,
     CAST("ordering" AS INT) AS ordering,
     CAST("title" AS VARCHAR) AS title,
     CAST("region" AS VARCHAR) AS region,
