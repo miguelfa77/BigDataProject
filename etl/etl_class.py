@@ -117,6 +117,3 @@ class ETL:
         except Exception as e:
             print(f"Failed to load PostgreSQL data to BigQuery: {e}")
 
-etl = ETL()
-etl.load_bigquery()
-
