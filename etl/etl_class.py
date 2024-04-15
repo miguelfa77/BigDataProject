@@ -64,7 +64,6 @@ class ETL:
             print(f'Filename {file_name}: Converted to PostgreSQL')
         
 
-
     def load_mongo(self):
         try:
             mongo_conn = MongoClient('localhost', 27017)
@@ -103,7 +102,6 @@ class ETL:
         except Exception as e:
             print(f"Failed to load MongoDB data to BigQuery: {e}")
         
-
         try:
             postgres_conn = sqlalchemy.create_engine(
                     f"postgresql+psycopg2://{self.postgres_config['user']}:{self.postgres_config['password']}@{self.postgres_config['host']}/{self.postgres_config['dbname']}")
@@ -113,7 +111,7 @@ class ETL:
                 print(f"Ingesting {file} into BigQuery")
                 pandas_gbq.to_gbq(postgres_df, f"{self.bigquery_config['dbname']}.{file}",project_id=self.bigquery_config['project_id'], if_exists='replace')
                 print(f"Successfully ingested {file} to BigQuery")
-            postgres_conn.close()
         except Exception as e:
             print(f"Failed to load PostgreSQL data to BigQuery: {e}")
+    
 
